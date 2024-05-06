@@ -1,0 +1,17 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.btn-facebook {
+    background-color: #3b5998; /* Cambia el color de fondo según desees */
+    font-size: 2rem; /* Cambia el tamaño del texto según desees */
+  }
+  
+  .btn-twitter {
+    background-color: #1da1f2; /* Cambia el color de fondo según desees */
+    font-size: 1.5rem; /* Cambia el tamaño del texto según desees */
+  }
+  
