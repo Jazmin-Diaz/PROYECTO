@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Form, FloatingLabel, Button, Row, InputGroup, Alert } from "react-bootstrap";
+import { Form, FloatingLabel, Button, Row, InputGroup, Alert, Container } from "react-bootstrap";
 import { useFormik } from "formik";
-import axios from "axios";
-import { Register } from "./Register";
+import Axios from '../../../../services/Axios';
+import { useNavigate } from "react-router-dom";
+import { Register } from './Register'; // Ajusta la ruta según la ubicación real de Register
 
 export function Login() {
   const [error, setError] = useState(null);
   const [showRegister, setShowRegister] = useState(false);
+  const navigate = useNavigate(); // Obtenemos el objeto history para la navegación
 
   const formik = useFormik({
     initialValues: {
@@ -15,9 +17,11 @@ export function Login() {
     },
     onSubmit: async (formValues) => {
       try {
-        const response = await axios.post('/api/auth/login', formValues);
+        const response = await Axios.post('/auth/login', formValues);
+        console.log(formValues);
         console.log(response.data);
-        // Manejar la respuesta del servidor, como establecer tokens de acceso, etc.
+        // Redirigir al usuario a la página principal del administrador
+        navigate('/lista');
       } catch (error) {
         setError("Error al iniciar sesión. Verifica tus credenciales.");
         console.error(error);
@@ -25,9 +29,9 @@ export function Login() {
     }
   });
 
-  const handleRegisterSuccess = (formData) => { // Nueva función para manejar el éxito del registro
-    setShowRegister(false); // Oculta el formulario de registro
-    formik.setValues(formData); // Establece los valores del formulario de inicio de sesión con los datos del registro
+  const handleRegisterSuccess = (formData) => {
+    setShowRegister(false);
+    formik.setValues(formData);
   };
 
   const handleRegisterClick = () => {
@@ -35,15 +39,15 @@ export function Login() {
   };
 
   return (
-    <>
-      {showRegister ? (
-        <Register onRegisterSuccess={handleRegisterSuccess} />
-      ) : (
-        <div>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form noValidate onSubmit={formik.handleSubmit}>
-            <Row className='mb-3'>
-              <InputGroup>
+    <Container className="mt-5">
+      <Row className="justify-content-md-center">
+        <div className="col-md-6">
+          {showRegister ? (
+            <Register onRegisterSuccess={handleRegisterSuccess} />
+          ) : (
+            <div>
+              {error && <Alert variant="danger">{error}</Alert>}
+              <Form noValidate onSubmit={formik.handleSubmit}>
                 <FloatingLabel controlId='floatingInput' label="Correo" className='mb-3'>
                   <Form.Control
                     type="email"
@@ -54,9 +58,6 @@ export function Login() {
                     required
                   />
                 </FloatingLabel>
-              </InputGroup>
-
-              <InputGroup>
                 <FloatingLabel controlId='floatingInput' label="Contraseña" className='mb-3'>
                   <Form.Control
                     type="password"
@@ -66,18 +67,15 @@ export function Login() {
                     required
                   />
                 </FloatingLabel>
-              </InputGroup>
-            </Row>
-
-            <Form.Group>
-              <div className='d-grid gap-2'>
-                <Button type='submit' size='lg'>Enviar</Button>
-                <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
-              </div>
-            </Form.Group>
-          </Form>
+                <div className='d-grid gap-2'>
+                  <Button type='submit' size='lg'>Enviar</Button>
+                  <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
+                </div>
+              </Form>
+            </div>
+          )}
         </div>
-      )}
-    </>
-  )
+      </Row>
+    </Container>
+  )
 }

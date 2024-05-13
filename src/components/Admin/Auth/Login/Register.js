@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Form, FloatingLabel, Button, Row, InputGroup, Alert } from "react-bootstrap";
 import { useFormik } from "formik";
-import axios from "axios";
+import Axios from "../../../../services/Axios";
+import { useNavigate } from 'react-router-dom';
 
-export function Register({ switchToLogin }) {
+export  function Register() {
   const [registrationMessage, setRegistrationMessage] = useState(null);
 
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       nomusuario: '',
@@ -15,11 +17,23 @@ export function Register({ switchToLogin }) {
     },
     onSubmit: async (formValues) => {
       try {
-        const response = await axios.post('/auth/registro', formValues);
+        const response = await Axios.post('/auth/registro', formValues);
+        console.log(formValues);
         console.log(response.data);
+        //navigate("/admin");
         setRegistrationMessage("Usuario registrado correctamente"); // Mensaje de éxito
       } catch (error) {
-        console.error(error);
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          console.error('Server responded with status:', error.response.status);
+          console.error('Error message:', error.response.data.message);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('No response received:', error.request);
+        } else {
+          // Something happened in setting up the request that triggered an error
+          console.error('Error setting up the request:', error.message);
+        }
         setRegistrationMessage("Error al registrar usuario"); // Mensaje de error
       }
     }
@@ -83,7 +97,7 @@ export function Register({ switchToLogin }) {
         <Form.Group>
           <div className='d-grid gap-2'>
             <Button type='submit' size='lg'>Registrarse</Button>
-            <Button variant="secondary" size='lg' onClick={switchToLogin}>Volver al inicio de sesión</Button>
+            <Button variant="secondary" size='lg' onClick={() => { navigate("/"); window.location.reload(); }}>Volver al inicio de sesión</Button>
           </div>
         </Form.Group>
       </Form>
