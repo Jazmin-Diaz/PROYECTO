@@ -13,11 +13,11 @@ export default function BarraMenu() {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <Link class="nav-link active" aria-current="page" to="/">Busqueda<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" className="bi bi-house" viewBox="0 0 16 16">
+            <Link class="nav-link active" aria-current="page" to="/lista">Busqueda<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" className="bi bi-house" viewBox="0 0 16 16">
                 </svg></Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" to="/lista">Galeria</Link>
+            <Link class="nav-link" to="/gallery">Galeria</Link>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +25,7 @@ export default function BarraMenu() {
             </a>
             <ul class="dropdown-menu">
               <li><Link class="dropdown-item" to='/datos'>Datos Personales</Link></li>
-              <li><Link class="dropdown-item" to="/">Lista personal</Link></li>
+              <li><Link class="dropdown-item" to="/gallery">Lista personal</Link></li>
               <li><hr class="dropdown-divider"/></li>
               <li><a class="dropdown-item" to="#">Something else here</a></li>
             </ul>

@@ -3,7 +3,7 @@ import './CameraApp.css';
 
 const CameraApp = ({ setCapturedImages }) => {
   const [imageSrc, setImageSrc] = useState(null);
-  const [capturedImages, setCapturedImagesLocal] = useState([]); // Cambiado el nombre del estado local
+  const [capturedImages, setCapturedImagesLocal] = useState([]);
   const videoRef = useRef();
   const [stream, setStream] = useState(null);
 
@@ -36,7 +36,7 @@ const CameraApp = ({ setCapturedImages }) => {
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     const photoURL = canvas.toDataURL('image/png');
     setImageSrc(photoURL);
-    setCapturedImagesLocal(prevImages => [...prevImages, photoURL]); // Usar el estado local
+    setCapturedImagesLocal(prevImages => [...prevImages, photoURL]);
   };
 
   const handleRetakePhoto = () => {
@@ -68,3 +68,6 @@ const CameraApp = ({ setCapturedImages }) => {
 };
 
 export default CameraApp;
+
+
+

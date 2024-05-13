@@ -44,4 +44,18 @@
   button:hover {
     background-color: #0056b3;
   }
+
+  /* CSS para la ventana de fotos */
+.photo-window {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px; /* Ajusta el margen según sea necesario */
+}
+
+.photo-item {
+  margin: 10px;
+  border-radius: 10px;
+}
+
   
