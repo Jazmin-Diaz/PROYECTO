@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import './CameraApp.css';
 
-const CameraApp = ({ updateCapturedImages }) => {
+const CameraApp = ({ setCapturedImages }) => {
   const [imageSrc, setImageSrc] = useState(null);
-  const [capturedImages, setCapturedImages] = useState([]);
+  const [capturedImages, setCapturedImagesLocal] = useState([]); // Cambiado el nombre del estado local
   const videoRef = useRef();
   const [stream, setStream] = useState(null);
 
@@ -36,7 +36,7 @@ const CameraApp = ({ updateCapturedImages }) => {
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     const photoURL = canvas.toDataURL('image/png');
     setImageSrc(photoURL);
-    updateCapturedImages(prevImages => [...prevImages, photoURL]);
+    setCapturedImagesLocal(prevImages => [...prevImages, photoURL]); // Usar el estado local
   };
 
   const handleRetakePhoto = () => {
