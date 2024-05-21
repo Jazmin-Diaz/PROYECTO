@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary-color: #28a745;
+  --primary-hover-color: #218838;
+  --primary-border-color: #1e7e34;
+  --font-family: 'Roboto', sans-serif;
+  --input-bg-color: rgba(255, 255, 255, 0.7); /* Fondo de los inputs con transparencia */
+  --input-text-color: rgba(46, 19, 198, 0.637); /* Color de texto de los inputs */
+  --input-border-color: rgba(7, 3, 16, 0.995); /* Color de borde de los inputs */
+  --input-placeholder-color: rgba(0, 0, 0, 0); /* Color del placeholder completamente transparente */
+}
+
+body {
+  font-family: var(--font-family);
+  background-image: url('https://cdn.pixabay.com/photo/2018/09/23/18/30/drop-3698073_1280.jpg'); /* Imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Hace que la imagen de fondo sea fija */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.login-form {
+  background-color: rgba(225, 214, 159, 0.3); /* Fondo aún más transparente */
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  color: var(--input-text-color);
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  background-color: var(--input-bg-color); /* Fondo de los inputs con transparencia */
+  color: var(--input-text-color); /* Color de texto de los inputs */
+  border: 1px solid var(--input-border-color); /* Borde con transparencia */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.login-form input[type="email"]::placeholder,
+.login-form input[type="password"]::placeholder,
+.login-form input[type="text"]::placeholder {
+  color: var(--input-placeholder-color); /* Color del placeholder completamente transparente */
+}
+
+.btn-custom {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.btn-custom:hover {
+  background-color: var(--primary-hover-color);
+  border-color: var(--primary-border-color);
+}
+
+
+

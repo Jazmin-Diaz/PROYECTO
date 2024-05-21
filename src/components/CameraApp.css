@@ -34,7 +34,7 @@
     margin: 0 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #2f00ff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -45,17 +45,14 @@
     background-color: #0056b3;
   }
 
-  /* CSS para la ventana de fotos */
-.photo-window {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px; /* Ajusta el margen según sea necesario */
-}
-
-.photo-item {
-  margin: 10px;
-  border-radius: 10px;
-}
-
+  .fotoweb {
+    font-size: 40px; /* Tamaño de fuente grande */
+    font-weight: bold; /* Texto en negrita */
+    text-align: left; /* Alinear el texto a la izquierda */
+    margin-bottom: 10px; /* Espacio entre "FotWeb" y el resto del contenido */
+    margin-left: 20px; /* Espacio desde el borde izquierdo */
+    color: rgb(248, 248, 249); /* Color del texto en blanco */
+  }
+  
+  
   

@@ -3,7 +3,7 @@ import React from "react";
 import '../inicio.css';
 import axios from "axios";
 
-
+//api anterior
 
 class Login extends React.Component {
   render() {
@@ -33,7 +33,7 @@ class Login extends React.Component {
                     <label
                       className="form-label"
                       htmlFor="form1Example13"
-                      style={{ color: "white" }} // Cambia el color aquí
+                      style={{ color: "green" }} // Cambia el color aquí
                     >
                       Email address
                     </label>

@@ -10,6 +10,6 @@ export function initialvalues(){
 export function validationSchema(){
     return Yup.object().shape({
         email: Yup.string().email("El email no es valido ").required(),
-        password: Yup.string().required("camplo obligatorio"),
+        password: Yup.string().required("campo obligatorio"),
     })
 }
